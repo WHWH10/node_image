@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Food = require('../models/food')
+const FoodTest = require('../models/food_test')
 
 // food 전체 읽어오기 
 router.get('/foods', (req, res) => {
@@ -9,6 +10,10 @@ router.get('/foods', (req, res) => {
         if (err) return res.status(500).send({ errorCode: 500, errorMessage: 'databse failure' });
         res.json(foods);
     })
+})
+
+router.get('/all-foods', (req, res) => {
+    
 })
 
 // 특정 food 읽어오기 
@@ -47,6 +52,34 @@ router.post('/foods', (req, res) => {
         })
     })
 })
+
+// food 추가
+router.post('/foods-test', (req, res) => {
+    console.log(req.body);
+    var food = new FoodTest();
+    food.foodName = req.body.foodName;
+    food.foodImageUrl = req.body.foodImageUrl;
+    food.foodContent = req.body.foodContent;
+    food.foodPrice = req.body.foodPrice;
+    food.foodTag = req.body.foodTag;
+    food.foodRate = req.body.foodRate;
+
+    food.save((err) => {
+        if (err) {
+            console.error(err);
+            res.json({
+                erroCode: 400,
+                errorMessage: err
+            })
+            return;
+        }
+        res.json({
+            resultCode: 200,
+            resultMessage: food
+        })
+    })
+})
+
 
 router.put('/foods/:food_id', (req, res) => {
     Food.findById(req.params.food_id, (err, food) => {

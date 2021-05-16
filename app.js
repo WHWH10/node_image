@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const AWS = require('aws-sdk')
 const uuid = require('uuid')
 
+const path = require('path')
+
 const app = express()
 // const hostname = process.env.NAVER_CLOUT_HOST
 const port = process.env.PORT || 3000;
@@ -15,14 +17,18 @@ const foodRouter = require('./rotues/foodRouter')
 
 const imageUploadRouter = require('./rotues/imageUploadRouter')
 
+// app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.set('view engine', 'ejs');
 
 app.use('/api', foodRouter)
 app.use('/image', imageUploadRouter)
 // const router = require('./rotues/index')(express.Router(), Food);
 // app.use('/api', router)
 // var foodRouter = require('./rotues/index');
+// app.use('views', __dirname + '/views');
 
 
 mongoose
@@ -48,9 +54,18 @@ mongoose
 // const upload = multer({ storage: storage }).single('image')
 
 app.get('/', (req, res) => {
-    res.send({
-        message: 'Main Page'
-    })
+    res.render('pages/index')
+    // res.send({
+    //     message: 'Main Page'
+    // })
+})
+
+app.get('/requirement', (req, res) => {
+    res.render('pages/requirement')
+})
+
+app.get('/api-docs', (req, res) => {
+    res.render('pages/api.ejs')
 })
 
 // app.post('/upload', upload, (req, res) => {
