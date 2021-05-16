@@ -5,6 +5,7 @@ const uuid = require('uuid')
 const multer = require('multer')
 
 const CategoryIcon = require('../models/categoryIcon')
+const EtcIcon = require('../models/etcIcons')
 
 const s3 = new AWS.S3({
     endpoint: new AWS.Endpoint(process.env.AWS_END_POINT),
@@ -109,7 +110,7 @@ router.post('/upload_test', upload, (req, res) => {
 })
 
 // CategoryIcon 전체 읽어오기 
-router.get('/icons', (req, res) => {
+router.get('/icons/category', (req, res) => {
     CategoryIcon.find((err, icons) => {
         if (err) return res.status(500).send({ errorCode: 500, errorMessage: 'databse failure' });
         res.json(icons);
@@ -117,7 +118,7 @@ router.get('/icons', (req, res) => {
 })
 
 // CategoryIcon 추가하기
-router.post('/icons', (req, res) => {
+router.post('/icons/category', (req, res) => {
     var categoryIcon = new CategoryIcon();
     categoryIcon.categoryIconName = req.body.categoryIconName;
     categoryIcon.categoryIconImageUrl = req.body.categoryIconImageUrl;
@@ -137,5 +138,36 @@ router.post('/icons', (req, res) => {
         })
     })
 })
+
+// EtcICon 전체 읽어오기 
+router.get('/icons/etc', (req, res) => {
+    EtcIcon.find((err, icons) => {
+        if (err) return res.status(500).send({ errorCode: 500, errorMessage: 'databse failure' });
+        res.json(icons);
+    })
+})
+
+// CategoryIcon 추가하기
+router.post('/icons/etc', (req, res) => {
+    var etcIcon = new EtcIcon();
+    etcIcon.etcIconName = req.body.etcIconName;
+    etcIcon.etcIconImageUrl = req.body.etcIconImageUrl;
+
+    etcIcon.save((err) => {
+        if(err) {
+            console.error(err);
+            res.json({
+                errorCode: 400,
+                errorMessage: err
+            })
+            return;
+        } 
+        res.json({
+            resultCode: 200,
+            resultMessage: etcIcon
+        })
+    })
+})
+
 
 module.exports = router;

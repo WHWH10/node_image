@@ -7,7 +7,8 @@ const AWS = require('aws-sdk')
 const uuid = require('uuid')
 
 const app = express()
-const port = process.env.PORT || 4000;
+// const hostname = process.env.NAVER_CLOUT_HOST
+const port = process.env.PORT || 3000;
 
 const Food = require('./models/food')
 const foodRouter = require('./rotues/foodRouter')
@@ -107,6 +108,6 @@ app.get('/', (req, res) => {
 //     })
 // })
 
-app.listen(port, () => {
+app.listen(port,  () => {
     console.log('Server is up at ' + port);
 })
