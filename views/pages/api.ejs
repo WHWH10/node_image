@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>API</title>
+</head>
+<body>
+    <h3>API</h3>
+
+    <br/>
+    <li class="food">
+        Food API
+        <ul>
+            <h4>전체 음식 조회 (GET)</h4>
+            <ul>
+            <a class="nav-link" href=" http://118.67.133.133:3000/api/foods">http://118.67.133.133:3000/api/foods</a>
+            </ul>
+        </ul>
+        <ul>
+            <h4>특정 음식 조회 (GET : food_id)</h4>
+            <ul>
+            <a class="nav-link" href=" http://118.67.133.133:3000/api/foods/:food_id">http://118.67.133.133:3000/api/foods/:food_id</a>
+            </ul>
+        </ul>
+    </li>
+    <br/>
+    <li class="icon">
+        Icon API
+        <ul>
+            <h4>카테고리 ICON 조회 (GET)</h4>
+            <ul>
+            <a class="nav-link" href=" http://118.67.133.133:3000/image/icons/category">http://118.67.133.133:3000/image/icons/category</a>
+            </ul>
+        </ul>
+        <ul>
+            <h4>기타 ICON 조회 (GET)</h4>
+            <ul>
+            <a class="nav-link" href=" http://118.67.133.133:3000/image/icons/etc">http://118.67.133.133:3000/image/icons/etc</a>
+            </ul>
+        </ul>
+    </li>
+    <li class="icon">
+        업로드 API -- 해당 음식이나 icon 없는 경우 추가해서 사용가능함
+        <ul>
+           <h4> 음식 이미지 업로드 (POST)</h4>
+            **파일 이름명으로 파일값이 저장됨
+            <ul>
+            <a class="nav-link" href=" http://118.67.133.133:3000/image/upload">http://118.67.133.133:3000/image/upload</a>
+            <br/>
+            <!-- post 피라미터  -->
+            <br/>
+            <table border='1' width=300px height = 100px>
+                <tr>
+                  <th align=center>파라미터</th>
+                  <th align=center>타입</th>
+                </tr>
+                <tr>
+                  <td align=center>image</td>
+                  <td align=center>jpg, png, jpeg ..</td>
+                </tr>
+              </table>
+            <br/>
+            </ul>
+        </ul>
+
+        <ul>
+            <h4>음식 컨텐츠 저장 (POST)</h4>
+            <ul>
+                <a class="nav-link" href=" http://118.67.133.133:3000/api/foods">http://118.67.133.133:3000/api/foods</a>
+                <br/>
+            <!-- post 피라미터  -->
+            <br/>
+            <table border='1' width=300px height = 100px>
+                <tr>
+                  <th align=center>파라미터</th>
+                  <th align=center>타입</th>
+                </tr>
+                <tr>
+                  <td align=center>foodName</td>
+                  <td align=center>String</td>
+                </tr>
+                <tr>
+                  <td align=center>foodImageUrl</td>
+                  <td align=center>String</td>
+                </tr>
+                <tr>
+                  <td align=center>foodContent</td>
+                  <td align=center>String</td>
+                </tr>
+                <tr>
+                  <td align=center>foodPrice</td>
+                  <td align=center>String</td>
+                </tr>
+                <tr>
+                  <td align=center>foodTag</td>
+                  <td align=center>Array</td>
+                </tr>
+                <tr>
+                  <td align=center>foodRate</td>
+                  <td align=center>String</td>
+                </tr><tr>
+                  <td align=center>writtenBy</td>
+                  <td align=center>String</td>
+                </tr>
+              </table>
+            <br/>
+            </ul>
+        </ul>
+    </li>
+
+</body>
+</html>
