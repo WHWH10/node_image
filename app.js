@@ -60,6 +60,10 @@ app.get('/', (req, res) => {
     // })
 })
 
+app.get('/hello', (req, res) => {
+	res.send('okkk')
+})
+
 app.get('/requirement', (req, res) => {
     res.render('pages/requirement')
 })
