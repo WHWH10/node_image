@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/hello', (req, res) => {
-	res.send('ok hello')
+	res.send('ok hwello')
 })
 
 app.get('/requirement', (req, res) => {
