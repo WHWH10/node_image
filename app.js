@@ -61,11 +61,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/hello', (req, res) => {
-	res.send('okkk')
+	res.send('ok hello')
 })
 
 app.get('/requirement', (req, res) => {
-    res.render('pages/requirement')
+    roes.render('pages/requirement')
 })
 
 app.get('/api-docs', (req, res) => {
